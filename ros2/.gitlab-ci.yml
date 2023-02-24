@@ -1,0 +1,8 @@
+include:
+  - project: fb-fi/ops/docker-ros
+    ref: main
+    file: .gitlab-ci.template.yml
+
+variables:
+  DOCKER_COMPOSE_DIR: ros2/docker
+  ROS_WORKSPACE_DIR: ros2
