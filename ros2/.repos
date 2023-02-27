@@ -1,0 +1,5 @@
+repositories:
+  mqtt_client:
+    type: git
+    url: https://gitlab.ika.rwth-aachen.de/fb-fi/github/mqtt_client.git
+    version: dev/ros2
