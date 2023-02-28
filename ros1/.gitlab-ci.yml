@@ -6,5 +6,7 @@ include:
 variables:
   IMAGE_DEV_TARGET: gitlab.ika.rwth-aachen.de:5050/${CI_PROJECT_PATH}:ros1-dev
   IMAGE_RUN_TARGET: gitlab.ika.rwth-aachen.de:5050/${CI_PROJECT_PATH}:ros1
+  IMAGE_DEV: gitlab.ika.rwth-aachen.de:5050/${CI_PROJECT_PATH}:ros1-dev
+  IMAGE_RUN: gitlab.ika.rwth-aachen.de:5050/${CI_PROJECT_PATH}:ros1
   DOCKER_COMPOSE_DIR: ros1/docker
   ROS_WORKSPACE_DIR: ros1

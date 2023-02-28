@@ -1,4 +1,4 @@
-x-base-image: &base-image gitlab.ika.rwth-aachen.de:5050/fb-fi/ops/docker-base/ros2:latest
+x-base-image: &base-image gitlab.ika.rwth-aachen.de:5050/fb-fi/ops/docker-base/ros2:rolling
 x-dev-image:  &dev-image  gitlab.ika.rwth-aachen.de:5050/fb-fi/ops/docker-ros-ci:latest-dev
 x-run-image:  &run-image  gitlab.ika.rwth-aachen.de:5050/fb-fi/ops/docker-ros-ci:latest
 x-command:    &command    ros2 topic list
