@@ -1,0 +1,10 @@
+include:
+  - project: fb-fi/ops/docker-ros
+    ref: fix/ci
+    file: .gitlab-ci.template.yml
+
+variables:
+  IMAGE_DEV_TARGET: gitlab.ika.rwth-aachen.de:5050/${CI_PROJECT_PATH}:ros2-dev
+  IMAGE_RUN_TARGET: gitlab.ika.rwth-aachen.de:5050/${CI_PROJECT_PATH}:ros2
+  DOCKER_COMPOSE_DIR: ros2/docker
+  ROS_WORKSPACE_DIR: ros2
