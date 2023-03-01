@@ -1,4 +1,4 @@
-x-base-image: &base-image gitlab.ika.rwth-aachen.de:5050/fb-fi/ops/docker-base/ros1:noetic
+x-base-image: &base-image ros:noetic-ros-core
 x-dev-image:  &dev-image  gitlab.ika.rwth-aachen.de:5050/fb-fi/ops/docker-ros-ci:ros1-dev
 x-run-image:  &run-image  gitlab.ika.rwth-aachen.de:5050/fb-fi/ops/docker-ros-ci:ros1
 x-command:    &command    roscore
