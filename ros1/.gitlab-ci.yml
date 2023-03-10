@@ -1,7 +1,7 @@
 include:
   - project: fb-fi/ops/docker-ros
-    ref: main
-    file: .gitlab-ci.template.yml
+    ref: feature/no-submodule-required
+    file: templates/.gitlab-ci.template.yml
 
 variables:
   IMAGE_DEV_TARGET: gitlab.ika.rwth-aachen.de:5050/${CI_PROJECT_PATH}:ros1-dev
