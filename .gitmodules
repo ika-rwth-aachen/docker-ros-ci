@@ -1,6 +1,3 @@
-[submodule "ros1/docker/docker-ros"]
-	path = ros1/docker/docker-ros
-	url = ../docker-ros.git
 [submodule "ros2/docker/docker-ros"]
 	path = ros2/docker/docker-ros
 	url = ../docker-ros.git
