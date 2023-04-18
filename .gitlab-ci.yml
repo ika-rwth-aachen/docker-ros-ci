@@ -8,4 +8,4 @@ variables:
   IMAGE_DEV_TARGET: gitlab.ika.rwth-aachen.de:5050/${CI_PROJECT_PATH}:ros1-dev
   IMAGE_RUN_TARGET: gitlab.ika.rwth-aachen.de:5050/${CI_PROJECT_PATH}:ros1
   PUSH_AS_LATEST: 'true'
-  ROS_WORKSPACE_DIR: ros1
+  ROS_DIR: ros1
