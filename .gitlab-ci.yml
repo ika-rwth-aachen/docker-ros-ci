@@ -7,4 +7,4 @@ variables:
   DOCKER_COMPOSE_DIR: ros2/docker
   IMAGE_DEV_TARGET: gitlab.ika.rwth-aachen.de:5050/${CI_PROJECT_PATH}:ros2-dev
   IMAGE_RUN_TARGET: gitlab.ika.rwth-aachen.de:5050/${CI_PROJECT_PATH}:ros2
-  ROS_WORKSPACE_DIR: ros2
+  ROS_DIR: ros2
