@@ -16,11 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-      - name: Hello world action step
-        id: hello
-        uses: ika-rwth-aachen/docker-ros@featurse/github-action
+      - uses: actions/checkout@v3
+      - id: foo
+        uses: ika-rwth-aachen/docker-ros@feature/github-action
         with:
           who-to-greet: 'Mona the Octocat'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
