@@ -4,6 +4,12 @@ on:
       - '*'
   repository_dispatch:
     types: [my-event]
+  workflow_dispatch:
+    inputs:
+      test:
+        description: 'Test input'
+        required: false
+        type: boolean
 
 jobs:
   hello_world_job:
