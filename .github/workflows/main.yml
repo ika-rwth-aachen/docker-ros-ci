@@ -1,4 +1,9 @@
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - '*'
+  repository_dispatch:
+    types: [my-event]
 
 jobs:
   hello_world_job:
