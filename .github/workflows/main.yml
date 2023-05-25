@@ -18,6 +18,8 @@ jobs:
     steps:
       - id: docker-ros
         uses: ika-rwth-aachen/docker-ros@feature/github-action
+        env:
+          DOCKER_COMPOSE_FILE: docker-compose.yaml
+          DOCKER_COMPOSE_DIR: ros1/docker
         with:
-          docker-compose-dir: ros1/docker
           token: ${{ secrets.PAT }}
