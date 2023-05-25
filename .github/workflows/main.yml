@@ -17,7 +17,8 @@ jobs:
       - run: echo "TEST" && echo ${{ github.event.inputs.docker-ros-git-ref }}
         shell: bash
       - id: docker-ros
-        uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
+        uses: ika-rwth-aachen/docker-ros@feature/github-action
+        #uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
         env:
           DOCKER_COMPOSE_FILE: docker-compose.yaml
           DOCKER_COMPOSE_DIR: ros1/docker
