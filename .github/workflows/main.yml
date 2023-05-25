@@ -2,24 +2,22 @@ on:
   push:
     branches-ignore:
       - '*'
-  repository_dispatch:
-    types: [my-event]
   workflow_dispatch:
     inputs:
-      test:
-        description: 'Test input'
+      docker-ros-git-ref:
+        description: 'docker-ros ref to run action'
         required: false
-        type: boolean
+        default: main
 
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
     name: docker-ros job
     steps:
-      - run: echo "TEST" && echo ${{ github.event.client_payload.ref }}
+      - run: echo "TEST" && echo ${{ inputs.docker-ros-git-ref }}
         shell: bash
       - id: docker-ros
-        uses: ika-rwth-aachen/docker-ros@feature/github-action
+        uses: ika-rwth-aachen/docker-ros@${{ inputs.docker-ros-git-ref }}
         env:
           DOCKER_COMPOSE_FILE: docker-compose.yaml
           DOCKER_COMPOSE_DIR: ros1/docker
