@@ -21,7 +21,6 @@ jobs:
         uses: jenseng/dynamic-uses@v1
         with:
           uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
-          with: '{ "token": "${{ secrets.PAT }}" }'   
+          with: '{ "token": "${{ secrets.PAT }}", "base-image": "ros:noetic-ros-core", "command": "roscore" }'   
         env:
-          DOCKER_COMPOSE_FILE: docker-compose.yaml
-          DOCKER_COMPOSE_DIR: ros1/docker
+          DOCKER_DIR: ros1/docker
