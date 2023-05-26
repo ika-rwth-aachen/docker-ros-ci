@@ -6,22 +6,15 @@ on:
     inputs:
       docker-ros-git-ref:
         description: 'docker-ros ref to run action'
-        required: false
         default: main
 
 jobs:
-  hello_world_job:
+  docker-ros:
     runs-on: ubuntu-latest
     name: docker-ros job
     steps:
-      - run: echo "TEST" && echo ${{ github.event.inputs.docker-ros-git-ref }}
-        shell: bash
-      - id: docker-ros
-        name: Dynamic Uses
+      - name: docker-ros step
         uses: jenseng/dynamic-uses@v1
         with:
           uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
-          with: '{ "token": "${{ secrets.PAT }}", "base-image": "ros:noetic-ros-core", "command": "roscore" }'   
-        env:
-          ROS_DIR: ros1
-          DOCKER_DIR: ros1/docker
+          with: '{ "token": "${{ secrets.PAT }}", "base-image": "ros:noetic-ros-core", "command": "roscore" , "build-context": "ros1"}'   
