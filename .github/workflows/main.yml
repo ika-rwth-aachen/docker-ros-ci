@@ -17,4 +17,4 @@ jobs:
         uses: jenseng/dynamic-uses@v1
         with:
           uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
-          with: '{ "token": "${{ secrets.PAT }}", "base-image": "ros:noetic-ros-core", "command": "roscore", "platform": "amd64", "target": "dev,run", "build-context": "ros1", "enable-industrial-ci": "true"}'   
+          with: '{ "base-image": "ros:noetic-ros-core", "command": "roscore", "platform": "amd64", "target": "dev,run", "build-context": "ros1", "enable-industrial-ci": "true"}'
