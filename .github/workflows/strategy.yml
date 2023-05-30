@@ -1,0 +1,37 @@
+on:
+    push:
+      branches-ignore:
+        - '*'
+    workflow_dispatch:
+      inputs:
+        docker-ros-git-ref:
+          description: "docker-ros Git reference"
+          default: main
+
+  jobs:
+    docker-ros:
+      name: docker-ros
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          target: [dev, run]
+          platform: [amd64, arm64]  
+      steps:
+        - name: docker-ros
+          if: ${{ github.event_name == 'workflow_dispatch' }}
+          uses: jenseng/dynamic-uses@v1
+          with:
+            uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
+            with: '{ "docker-ros-ref": "feature/github-action", "base-image": "ros:noetic-ros-core", "command": "roscore", "platform": "${{ matrix.platform }}", "target": "${{ matrix.target }}", "build-context": "ros1", "enable-industrial-ci": "true"}'
+        - name: docker-ros
+          if: ${{ github.event_name == 'push' }}
+          uses: ika-rwth-aachen/docker-ros@feature/github-action
+          with:
+            docker-ros-ref: feature/github-action
+            base-image: ros:noetic-ros-core
+            command: roscore
+            platform: ${{ matrix.platform }}
+            target: ${{ matrix.target }}
+            build-context: ros1
+            enable-industrial-ci: true
+  
