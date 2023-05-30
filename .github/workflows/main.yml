@@ -14,7 +14,18 @@ jobs:
     name: docker-ros
     steps:
       - name: docker-ros
+        if: ${{ github.event_name == 'workflow_dispatch' }}
         uses: jenseng/dynamic-uses@v1
         with:
           uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
           with: '{ "base-image": "ros:noetic-ros-core", "command": "roscore", "platform": "amd64", "target": "dev,run", "build-context": "ros1", "enable-industrial-ci": "true"}'
+      - name: docker-ros
+        if: ${{ github.event_name == 'push' }}
+        uses: ika-rwth-aachen/docker-ros@feature/github-action
+        with:
+          base-image: ros:noetic-ros-core
+          command: roscore
+          platform: amd64
+          target: dev,run
+          build-context: ros1
+          enable-industrial-ci: true
