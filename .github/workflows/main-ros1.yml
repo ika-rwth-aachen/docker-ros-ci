@@ -29,6 +29,7 @@ jobs:
           platform: amd64
           target: dev,run
           build-context: ros1
+          image: ghcr.io/${{ github.repository }}:ros1
           enable-industrial-ci: true
   docker-ros-advanced:
     name: docker-ros-advanced
@@ -54,4 +55,5 @@ jobs:
           platform: ${{ matrix.platform }}
           target: ${{ matrix.target }}
           build-context: ros1
+          image: ghcr.io/${{ github.repository }}:ros1-${{ matrix.platform }}
           enable-industrial-ci: true
