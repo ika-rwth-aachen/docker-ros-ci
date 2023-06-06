@@ -2,10 +2,10 @@ include:
   - remote: https://raw.githubusercontent.com/ika-rwth-aachen/docker-ros/$DOCKER_ROS_GIT_REF/templates/.gitlab-ci.template.yml
 
 variables:
-  BASE_IMAGE: rwthika/ros:latest
-  COMMAND: rostopic list
+  BASE_IMAGE: rwthika/ros2:latest
+  COMMAND: ros2 topic list
   PLATFORM: amd64,arm64
   TARGET: dev,run
-  BUILD_CONTEXT: ros1
-  IMAGE_TAG: ros1
+  BUILD_CONTEXT: ros2
+  IMAGE_TAG: ros2
   ENABLE_INDUSTRIAL_CI: 'true'
