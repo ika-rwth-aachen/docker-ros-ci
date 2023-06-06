@@ -1,5 +1,5 @@
 include:
-  - remote: https://raw.githubusercontent.com/ika-rwth-aachen/docker-ros/main/templates/.gitlab-ci.template.yml
+  - remote: https://raw.githubusercontent.com/ika-rwth-aachen/docker-ros/$DOCKER_ROS_GIT_REF/templates/.gitlab-ci.template.yml
 
 variables:
   BASE_IMAGE: rwthika/ros2:latest
