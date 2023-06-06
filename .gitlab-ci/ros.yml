@@ -1,0 +1,11 @@
+include:
+  - remote: https://raw.githubusercontent.com/ika-rwth-aachen/docker-ros/main/templates/.gitlab-ci.template.yml
+
+variables:
+  BASE_IMAGE: rwthika/ros:latest
+  COMMAND: roscore
+  PLATFORM: amd64,arm64
+  TARGET: dev,run
+  BUILD_CONTEXT: ros1
+  IMAGE_TAG: ros1
+  ENABLE_INDUSTRIAL_CI: 'true'
