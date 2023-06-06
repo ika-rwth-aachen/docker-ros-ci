@@ -51,7 +51,7 @@ jobs:
         uses: jenseng/dynamic-uses@v1
         with:
           uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
-          with: '{ "base-image": "rwthika/ros:latest", "command": "roscore", "platform": "${{ matrix.platform }}", "target": "${{ matrix.target }}", "build-context": "ros1", "tag": "image-ros1", "enable-industrial-ci": "true", "enable-singlearch-push": "true"}'
+          with: '{ "base-image": "rwthika/ros:latest", "command": "roscore", "platform": "${{ matrix.platform }}", "target": "${{ matrix.target }}", "build-context": "ros1", "image-tag": "ros1", "enable-industrial-ci": "true", "enable-singlearch-push": "true"}'
 
       # TODO: re-enable once docker-ros action is on main
       # - name: docker-ros
