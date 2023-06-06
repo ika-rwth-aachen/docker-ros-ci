@@ -26,7 +26,7 @@ jobs:
 
       - name: docker-ros
         if: ${{ github.event_name == 'push' }}
-        uses: ika-rwth-aachen/docker-ros@main
+        uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
         with:
           base-image: rwthika/ros2:latest
           command: ros2 topic list
@@ -54,9 +54,9 @@ jobs:
   
       - name: docker-ros
         if: ${{ github.event_name == 'push' }}
-        uses: ika-rwth-aachen/docker-ros@main
+        uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
         with:
-          base-image: rwthika/ros2:rolling
+          base-image: rwthika/ros2:latest
           command: ros2 topic list
           platform: ${{ matrix.platform }}
           target: ${{ matrix.target }}
