@@ -1,11 +1,9 @@
-include:
-  - project: fb-fi/ops/docker-ros
-    ref: $DOCKER_ROS_GIT_REF
-    file: templates/.gitlab-ci.template.yml
+ros1:
+  trigger:
+    include: .gitlab-ci/ros.yml
+    strategy: depend
 
-variables:
-  DOCKER_COMPOSE_DIR: ros1/docker
-  IMAGE_DEV_TARGET: gitlab.ika.rwth-aachen.de:5050/${CI_PROJECT_PATH}:ros1-dev
-  IMAGE_RUN_TARGET: gitlab.ika.rwth-aachen.de:5050/${CI_PROJECT_PATH}:ros1
-  PUSH_AS_LATEST: 'true'
-  ROS_DIR: ros1
+ros2:
+  trigger:
+    include: .gitlab-ci/ros2.yml
+    strategy: depend
