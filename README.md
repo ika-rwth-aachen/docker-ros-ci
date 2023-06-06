@@ -1,3 +1,4 @@
-# docker-ros-ci
+# *docker-ros-ci*
 
-This repository is integrating [*docker-ros*](https://gitlab.ika.rwth-aachen.de/fb-fi/ops/docker-ros) for CI testing purposes. Its *main* branch holds ROS tests for ROS and ROS 2.
+> **Note**  
+> This repository is integrating [*docker-ros*](https://github.com/ika-rwth-aachen/docker-ros) for CI testing purposes.
