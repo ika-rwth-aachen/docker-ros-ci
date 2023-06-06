@@ -2,7 +2,7 @@ include:
   - remote: https://raw.githubusercontent.com/ika-rwth-aachen/docker-ros/$DOCKER_ROS_GIT_REF/templates/.gitlab-ci.template.yml
 
 variables:
-  BASE_IMAGE: rwthika/ros2:rolling
+  BASE_IMAGE: rwthika/ros2:latest
   COMMAND: ros2 topic list
   PLATFORM: amd64,arm64
   TARGET: dev,run
