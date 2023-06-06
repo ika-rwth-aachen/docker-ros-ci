@@ -1,3 +1,5 @@
+name: ROS2
+
 on:
   push:
     branches-ignore:
@@ -9,19 +11,22 @@ on:
         default: main
 
 jobs:
-  docker-ros-basic:
+
+  basic:
+    name: basic
     runs-on: ubuntu-latest
-    name: docker-ros-basic
     steps:
+
       - name: docker-ros
         if: ${{ github.event_name == 'workflow_dispatch' }}
         uses: jenseng/dynamic-uses@v1
         with:
           uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
           with: '{ "base-image": "ros:rolling-ros-core", "command": "ros2 topic list", "platform": "amd64", "target": "dev,run", "build-context": "ros2", "image-tag": "ros2", "enable-industrial-ci": "true"}'
+
       - name: docker-ros
         if: ${{ github.event_name == 'push' }}
-        uses: ika-rwth-aachen/docker-ros@feature/github-action
+        uses: ika-rwth-aachen/docker-ros@main
         with:
           base-image: ros:rolling-ros-core
           command: ros2 topic list
@@ -30,23 +35,26 @@ jobs:
           build-context: ros2
           image-tag: ros2
           enable-industrial-ci: true
-  docker-ros-advanced:
-    name: docker-ros-advanced
+
+  advanced:
+    name: advanced
     runs-on: ubuntu-latest
     strategy:
       matrix:
         target: [dev, run]
         platform: [amd64, arm64]  
     steps:
+
       - name: docker-ros
         if: ${{ github.event_name == 'workflow_dispatch' }}
         uses: jenseng/dynamic-uses@v1
         with:
           uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
-          with: '{ "base-image": "ros:rolling-ros-core", "command": "ros2 topic list", "platform": "${{ matrix.platform }}", "target": "${{ matrix.target }}", "build-context": "ros2", "image-tag": "ros2", "enable-industrial-ci": "true", "enable-singlearch-push": "true",}'
+          with: '{ "base-image": "ros:rolling-ros-core", "command": "ros2 topic list", "platform": "${{ matrix.platform }}", "target": "${{ matrix.target }}", "build-context": "ros2", "image-tag": "ros2", "enable-industrial-ci": "true", "enable-singlearch-push": "true"}'
+  
       - name: docker-ros
         if: ${{ github.event_name == 'push' }}
-        uses: ika-rwth-aachen/docker-ros@feature/github-action
+        uses: ika-rwth-aachen/docker-ros@main
         with:
           base-image: ros:rolling-ros-core
           command: ros2 topic list

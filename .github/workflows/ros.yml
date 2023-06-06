@@ -1,3 +1,5 @@
+name: ROS
+
 on:
   push:
     branches-ignore:
@@ -9,19 +11,22 @@ on:
         default: main
 
 jobs:
-  docker-ros-basic:
+
+  basic:
+    name: basic
     runs-on: ubuntu-latest
-    name: docker-ros-basic
     steps:
+
       - name: docker-ros
         if: ${{ github.event_name == 'workflow_dispatch' }}
         uses: jenseng/dynamic-uses@v1
         with:
           uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
           with: '{ "base-image": "ros:noetic-ros-core", "command": "roscore", "platform": "amd64", "target": "dev,run", "build-context": "ros1", "image-tag": "ros1", "enable-industrial-ci": "true"}'
+
       - name: docker-ros
         if: ${{ github.event_name == 'push' }}
-        uses: ika-rwth-aachen/docker-ros@feature/github-action
+        uses: ika-rwth-aachen/docker-ros@main
         with:
           base-image: ros:noetic-ros-core
           command: roscore
@@ -30,23 +35,26 @@ jobs:
           build-context: ros1
           image-tag: ros1
           enable-industrial-ci: true
-  docker-ros-advanced:
-    name: docker-ros-advanced
+
+  advanced:
+    name: advanced
     runs-on: ubuntu-latest
     strategy:
       matrix:
         target: [dev, run]
         platform: [amd64, arm64]  
     steps:
+
       - name: docker-ros
         if: ${{ github.event_name == 'workflow_dispatch' }}
         uses: jenseng/dynamic-uses@v1
         with:
           uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
-          with: '{ "base-image": "ros:noetic-ros-core", "command": "roscore", "platform": "${{ matrix.platform }}", "target": "${{ matrix.target }}", "build-context": "ros1", "tag": "image-ros1", "enable-industrial-ci": "true", "enable-singlearch-push": "true",}'
+          with: '{ "base-image": "ros:noetic-ros-core", "command": "roscore", "platform": "${{ matrix.platform }}", "target": "${{ matrix.target }}", "build-context": "ros1", "tag": "image-ros1", "enable-industrial-ci": "true", "enable-singlearch-push": "true"}'
+
       - name: docker-ros
         if: ${{ github.event_name == 'push' }}
-        uses: ika-rwth-aachen/docker-ros@feature/github-action
+        uses: ika-rwth-aachen/docker-ros@main
         with:
           base-image: ros:noetic-ros-core
           command: roscore
