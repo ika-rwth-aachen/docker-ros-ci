@@ -22,13 +22,13 @@ jobs:
         uses: jenseng/dynamic-uses@v1
         with:
           uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
-          with: '{ "base-image": "ros:rolling-ros-core", "command": "ros2 topic list", "platform": "amd64", "target": "dev,run", "build-context": "ros2", "image-tag": "ros2", "enable-industrial-ci": "true"}'
+          with: '{ "base-image": "rwthika/ros2:latest", "command": "ros2 topic list", "platform": "amd64", "target": "dev,run", "build-context": "ros2", "image-tag": "ros2", "enable-industrial-ci": "true"}'
 
       - name: docker-ros
         if: ${{ github.event_name == 'push' }}
         uses: ika-rwth-aachen/docker-ros@main
         with:
-          base-image: ros:rolling-ros-core
+          base-image: rwthika/ros2:latest
           command: ros2 topic list
           platform: amd64
           target: dev,run
@@ -50,13 +50,13 @@ jobs:
         uses: jenseng/dynamic-uses@v1
         with:
           uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
-          with: '{ "base-image": "ros:rolling-ros-core", "command": "ros2 topic list", "platform": "${{ matrix.platform }}", "target": "${{ matrix.target }}", "build-context": "ros2", "image-tag": "ros2", "enable-industrial-ci": "true", "enable-singlearch-push": "true"}'
+          with: '{ "base-image": "rwthika/ros2:latest", "command": "ros2 topic list", "platform": "${{ matrix.platform }}", "target": "${{ matrix.target }}", "build-context": "ros2", "image-tag": "ros2", "enable-industrial-ci": "true", "enable-singlearch-push": "true"}'
   
       - name: docker-ros
         if: ${{ github.event_name == 'push' }}
         uses: ika-rwth-aachen/docker-ros@main
         with:
-          base-image: ros:rolling-ros-core
+          base-image: rwthika/ros2:latest
           command: ros2 topic list
           platform: ${{ matrix.platform }}
           target: ${{ matrix.target }}
