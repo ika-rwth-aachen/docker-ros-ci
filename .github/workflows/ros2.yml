@@ -56,7 +56,7 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         uses: ika-rwth-aachen/docker-ros@main
         with:
-          base-image: rwthika/ros2:latest
+          base-image: rwthika/ros2:rolling
           command: ros2 topic list
           platform: ${{ matrix.platform }}
           target: ${{ matrix.target }}
