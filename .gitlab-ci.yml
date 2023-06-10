@@ -2,7 +2,8 @@ include:
   - remote: https://raw.githubusercontent.com/ika-rwth-aachen/docker-ros/$DOCKER_ROS_GIT_REF/.gitlab-ci/docker-ros.yml
 
 variables:
-  BASE_IMAGE: rwthika/ros:latest
+  BASE_IMAGE: ubuntu:20.04
+  ROS_DISTRO: noetic
   COMMAND: rostopic list
   PLATFORM: amd64,arm64
   TARGET: dev,run

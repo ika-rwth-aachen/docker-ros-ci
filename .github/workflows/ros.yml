@@ -22,13 +22,14 @@ jobs:
         uses: jenseng/dynamic-uses@v1
         with:
           uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
-          with: '{ "base-image": "rwthika/ros:latest", "command": "roscore", "platform": "amd64", "target": "dev,run", "build-context": "ros1", "image-tag": "ros1", "enable-industrial-ci": "true"}'
+          with: '{ "base-image": "ubuntu:20.04", "ros-distro": "noetic", "command": "roscore", "platform": "amd64", "target": "dev,run", "build-context": "ros1", "image-tag": "ros1", "enable-industrial-ci": "true"}'
 
       - name: docker-ros
         if: ${{ github.event_name == 'push' }}
         uses: ika-rwth-aachen/docker-ros@main
         with:
-          base-image: rwthika/ros:latest
+          base-image: ubuntu:20.04
+          ros-distro: noetic
           command: roscore
           platform: amd64,arm64
           target: dev,run
@@ -50,13 +51,14 @@ jobs:
         uses: jenseng/dynamic-uses@v1
         with:
           uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
-          with: '{ "base-image": "rwthika/ros:latest", "command": "roscore", "platform": "${{ matrix.platform }}", "target": "${{ matrix.target }}", "build-context": "ros1", "image-tag": "ros1", "enable-industrial-ci": "true", "enable-singlearch-push": "true"}'
+          with: '{ "base-image": "ubuntu:20.04", "ros-distro": "noetic", "command": "roscore", "platform": "${{ matrix.platform }}", "target": "${{ matrix.target }}", "build-context": "ros1", "image-tag": "ros1", "enable-industrial-ci": "true", "enable-singlearch-push": "true"}'
 
       - name: docker-ros
         if: ${{ github.event_name == 'push' }}
         uses: ika-rwth-aachen/docker-ros@main
         with:
-          base-image: rwthika/ros:latest
+          base-image: ubuntu:20.04
+          ros-distro: noetic
           command: roscore
           platform: ${{ matrix.platform }}
           target: ${{ matrix.target }}
