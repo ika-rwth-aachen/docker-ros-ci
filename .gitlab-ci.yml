@@ -7,6 +7,4 @@ variables:
   COMMAND: ros2 topic list
   PLATFORM: amd64,arm64
   TARGET: dev,run
-  BUILD_CONTEXT: ros2
-  IMAGE_TAG: ros2
   ENABLE_INDUSTRIAL_CI: 'true'
