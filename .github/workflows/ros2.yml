@@ -22,7 +22,7 @@ jobs:
         uses: jenseng/dynamic-uses@v1
         with:
           uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
-          with: '{ "base-image": "rwthika/ros2:jazzy", "rmw-implementation": "rmw_zenoh_cpp", "command": "ros2 topic list", "platform": "amd64", "target": "dev,run", "build-context": "ros2", "image-tag": "ros2", "enable-industrial-ci": "true"}'
+          with: '{ "base-image": "rwthika/ros2:jazzy", "rmw-implementation": "rmw_zenoh_cpp", "command": "ros2 topic list", "platform": "amd64", "target": "dev,run", "enable-industrial-ci": "true"}'
 
       - name: docker-ros
         if: ${{ github.event_name == 'push' }}
@@ -33,8 +33,6 @@ jobs:
           command: ros2 topic list
           platform: amd64
           target: dev,run
-          build-context: ros2
-          image-tag: ros2
           enable-industrial-ci: true
 
   advanced:
@@ -51,7 +49,7 @@ jobs:
         uses: jenseng/dynamic-uses@v1
         with:
           uses: ika-rwth-aachen/docker-ros@${{ github.event.inputs.docker-ros-git-ref }}
-          with: '{ "base-image": "rwthika/ros2:jazzy", "command": "ros2 topic list", "platform": "${{ matrix.platform }}", "target": "${{ matrix.target }}", "build-context": "ros2", "image-tag": "ros2", "enable-industrial-ci": "true", "enable-singlearch-push": "true"}'
+          with: '{ "base-image": "rwthika/ros2:jazzy", "command": "ros2 topic list", "platform": "${{ matrix.platform }}", "target": "${{ matrix.target }}", "enable-industrial-ci": "true", "enable-singlearch-push": "true"}'
 
       - name: docker-ros
         if: ${{ github.event_name == 'push' }}
@@ -62,7 +60,5 @@ jobs:
           command: ros2 topic list
           platform: ${{ matrix.platform }}
           target: ${{ matrix.target }}
-          build-context: ros2
-          image-tag: ros2
           enable-industrial-ci: true
           enable-singlearch-push: true
